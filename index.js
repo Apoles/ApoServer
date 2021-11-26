@@ -67,13 +67,11 @@ app.post("/images", upload.single("resim"), async (req, res) => {
 
     const urls = await getUrlBlaze(auth.auth, auth.apiUrl);
 
-    const result = await uploadFileBack(
-      urls.authorizationToken,
-      urls.uploadUrl,
-      file
-    ).catch((err) => {
-      console.log(err);
-    });
+    await uploadFileBack(urls.authorizationToken, urls.uploadUrl, file).catch(
+      (err) => {
+        console.log(err);
+      }
+    );
 
     res.status(200).send(result);
   } catch (err) {
