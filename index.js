@@ -75,9 +75,10 @@ app.post("/images", upload.single("resim"), async (req, res) => {
       console.log(err);
     });
 
-    res.send(result);
+    res.status(200).send(result);
   } catch (err) {
     console.log("========>", err);
+    res.status(404).send("hata");
   }
 });
 
