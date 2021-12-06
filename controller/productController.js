@@ -63,3 +63,14 @@ export const uptadeOneDOcumant = async (req, res) => {
     console.log(err);
   }
 };
+
+export const getOneDOcumant = async (req, res) => {
+  const findOne = await Post.findOne(
+    { _id: req.headers.id },
+    {},
+    {},
+    function (err, results) {}
+  );
+
+  res.send(findOne);
+};

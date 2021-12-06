@@ -9,7 +9,6 @@ import postRoutes from "./routes/post.js";
 
 import cookieParser from "cookie-parser";
 import loginRoute from "./routes/loginRoutes.js";
-import auth from "./middlewares/middleAuth.js";
 import productRoute from "./routes/productRoute.js";
 import customerRouter from "./routes/customerRoutes.js";
 
