@@ -1,5 +1,5 @@
 
-7000 portu çalışıyorsa ' sudo kill $(sudo lsof -t -i:3000) ' komutla portu kapatın
+7000 portu çalışıyorsa  sudo kill $(sudo lsof -t -i:3000)  komutla portu kapatın
 
 
 
