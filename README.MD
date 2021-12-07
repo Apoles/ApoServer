@@ -17,3 +17,11 @@ POST http://localhost:7000/customer Ürünü satın alanın bilgilerini oluştur
 #
 
 POST http://localhost:7000/login Kullanıcı ve şifre giriniz eğer sistemde kayıtlıysa token ve refTOken döner
+
+############    ÇALIŞAN PORTU KAPATMA KOMUTU    ############
+###                                                      ###  
+###                                                      ### 
+###          sudo kill $(sudo lsof -t -i:3000)           ### 
+###                                                      ### 
+###                                                      ### 
+############################################################
