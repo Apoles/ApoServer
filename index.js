@@ -17,6 +17,7 @@ import {
   getUrlBlaze,
   uploadFileBack,
 } from "./backBlazeServer/functions.js";
+import mailRoute from "./routes/mailRoutes.js";
 
 const PORT = process.env.PORT || 7000;
 const app = express();
@@ -41,6 +42,7 @@ app.use("/posts", postRoutes);
 app.use("/login", loginRoute);
 app.use("/product", productRoute);
 app.use("/customer", customerRouter);
+app.use("/mail", mailRoute);
 
 const CONNTECTION_URL = process.env.CONNTECTION_URL;
 mongoose

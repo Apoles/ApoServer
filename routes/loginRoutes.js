@@ -1,5 +1,5 @@
 import express from "express";
-import { createTokFromRefTok, getUser, login } from "../controller/post.js";
+import { createTokFromRefTok, getUser, login } from "../controller/login.js";
 
 import auth from "../middlewares/middleAuth.js";
 
