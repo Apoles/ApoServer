@@ -69,7 +69,11 @@ export const getOneDOcumant = async (req, res) => {
     { _id: req.headers.id },
     {},
     {},
-    function (err, results) {}
+    function (err, results) {
+      if (results == null) {
+        res.status(404);
+      }
+    }
   );
 
   res.send(findOne);

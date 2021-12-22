@@ -1,13 +1,5 @@
-<<<<<<< HEAD
 7000 portu çalışıyorsa ' sudo kill $(sudo lsof -t -i:3000) ' komutla portu kapatın
 
-=======
-
-7000 portu çalışıyorsa  '  sudo kill $(sudo lsof -t -i:3000)  '  komutla portu kapatın
-
-
-
->>>>>>> origin
 PRODUCT
 
 GET http://localhost:7000/product Ürünleri json formatında getirir
@@ -18,21 +10,10 @@ POST http://localhost:7000/product/delete İd si verilen ürünü siler
 
 POST http://localhost:7000/product/uptade İd si verilen ürünü günceller
 
-<<<<<<< HEAD
 CUSTOMER
 
 GET http://localhost:7000/customer Müşteri bilgilerini json formatında getirir
 
 POST http://localhost:7000/customer Ürünü satın alanın bilgilerini oluşturur
-=======
- CUSTOMER
-
-GET http://localhost:7000/customer Müşteri bilgilerini json formatında getirir
-
-POST http://localhost:7000/customer Ürünü satın alanın bilgilerini oluşturur
-
-
->>>>>>> origin
 
 POST http://localhost:7000/login Kullanıcı ve şifre giriniz eğer sistemde kayıtlıysa token ve refTOken döner
-

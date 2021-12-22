@@ -1,5 +1,5 @@
 import multer from "multer";
-
+import fs from "fs";
 import express from "express";
 import bodyParser from "body-parser";
 import mongoose from "mongoose";
@@ -18,14 +18,21 @@ import {
   uploadFileBack,
 } from "./backBlazeServer/functions.js";
 import mailRoute from "./routes/mailRoutes.js";
+import upload from "./middlewares/uploadMulter.js";
 
 const PORT = process.env.PORT || 7000;
 const app = express();
 
 dotenv.config();
 
-const upload = multer({ dest: "uploads/" });
+const createUploadDir = (str) => {
+  if (!fs.existsSync(str)) {
+    fs.mkdirSync(str, { recursive: true });
+  }
+};
 
+createUploadDir("./uploads/images");
+const uploads = upload;
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 app.use(cors());
@@ -59,8 +66,7 @@ mongoose
   .catch((error) => {});
 
 //         BACK BLAZE EXAMPLE
-
-app.post("/images", upload.single("resim"), async (req, res) => {
+app.post("/images", uploads.single("resim"), async (req, res) => {
   const file = req.file;
 
   try {
@@ -68,11 +74,13 @@ app.post("/images", upload.single("resim"), async (req, res) => {
 
     const urls = await getUrlBlaze(auth.auth, auth.apiUrl);
 
-    await uploadFileBack(urls.authorizationToken, urls.uploadUrl, file).catch(
-      (err) => {
-        console.log(err);
-      }
-    );
+    const result = await uploadFileBack(
+      urls.authorizationToken,
+      urls.uploadUrl,
+      file
+    ).catch((err) => {
+      console.log(err);
+    });
 
     res.status(200).send(result);
   } catch (err) {
@@ -93,3 +101,22 @@ file =======> {
   path: 'uploads/57d6d9d0a47f668031b97162ff024a60',
   size: 313702
 }*/
+
+/*  try {
+    const auth = await authBackBlaze();
+
+    const urls = await getUrlBlaze(auth.auth, auth.apiUrl);
+
+    const result = await uploadFileBack(
+      urls.authorizationToken,
+      urls.uploadUrl,
+      file
+    ).catch((err) => {
+      console.log(err);
+    });
+
+    res.status(200).send(result);
+  } catch (err) {
+    console.log("========>", err);
+    res.status(404).send("hata");
+  }*/
